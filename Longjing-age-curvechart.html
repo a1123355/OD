@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,14 +7,42 @@
     <style>
         body {
             background-color: #e4edf0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .card {
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 24px;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+        }
+        .card h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .card h2 {
+            font-size: 18px;
+            font-weight: normal;
+            color: #666;
         }
         iframe {
             background-color: #e4edf0;
+            display: block;
+            margin: 0 auto;
+            border-radius: 12px;
+            border: none;
         }
     </style>
 </head>
 <body>
-    <h1>這是台中市龍井區 A11-A33的人口分布</h1>
-    <iframe src="https://plotdb.io/v/chart/37095" width="100%" height="600px" allowfullscreen="true" frameborder="0"></iframe>
+    <div class="card">
+        <h1>這是台中市龍井區 A11-A33 的人口分布，</h1>
+        <h2>blabla</h2>
+    </div>
+    <iframe src="https://plotdb.io/v/chart/37095" width="100%" height="600px" allowfullscreen="true"></iframe>
 </body>
 </html>
