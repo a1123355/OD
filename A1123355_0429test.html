@@ -12,7 +12,9 @@
       --card-dark: #2c2c2c;
       --text-light: #333333;
       --text-dark: #f0f0f0;
+      --accent: #4CAF50;
     }
+
     body {
       font-family: 'Noto Sans TC', '微軟正黑體', sans-serif;
       margin: 0;
@@ -21,10 +23,12 @@
       color: var(--text-light);
       transition: background-color 0.3s, color 0.3s;
     }
+
     .dark-mode {
       background-color: var(--bg-dark);
       color: var(--text-dark);
     }
+
     .container {
       max-width: 900px;
       margin: auto;
@@ -34,42 +38,36 @@
       border-radius: 12px;
       transition: background 0.3s;
     }
+
     .dark-mode .container {
       background: var(--card-dark);
       box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     }
-    h1 {
-      font-size: 24px;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-    iframe {
-      width: 100%;
-      height: 600px;
-      border: none;
-      border-radius: 8px;
-      margin-top: 20px;
-    }
+
     .toggle-wrapper {
       display: flex;
       justify-content: center;
       align-items: center;
       margin-bottom: 20px;
     }
+
     .toggle-label {
       margin-left: 10px;
       cursor: pointer;
     }
+
     .toggle-switch {
       position: relative;
       width: 50px;
       height: 24px;
     }
+
     .toggle-switch input {
       opacity: 0;
       width: 0;
       height: 0;
     }
+
     .slider {
       position: absolute;
       cursor: pointer;
@@ -81,9 +79,10 @@
       border-radius: 24px;
       transition: 0.3s;
     }
+
     .slider::before {
-      position: absolute;
       content: "";
+      position: absolute;
       height: 18px;
       width: 18px;
       left: 3px;
@@ -92,64 +91,85 @@
       border-radius: 50%;
       transition: 0.3s;
     }
+
     input:checked + .slider {
       background-color: #66bb6a;
     }
+
     input:checked + .slider::before {
       transform: translateX(26px);
     }
+
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 10px 20px;
+      background: #e0e0e0;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .tab-btn.active {
+      background-color: var(--accent);
+      color: white;
+    }
+
     .card {
+      display: none;
       background: var(--card-light);
       border-radius: 12px;
       padding: 20px 25px;
-      margin-bottom: 30px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-      transition: background 0.3s, box-shadow 0.3s;
     }
-    .dark-mode .card {
-      background: var(--card-dark);
-      box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+
+    .card.active {
+      display: block;
     }
+
     .card h2 {
-      font-size: 22px;
       margin-top: 0;
-      margin-bottom: 12px;
+      font-size: 22px;
     }
+
     .card p {
       font-size: 16px;
       line-height: 1.8;
     }
 
-    /* 響應式調整 */
+    .card-content {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .card-content img {
+      width: 300px;
+      border-radius: 10px;
+    }
+
     @media (max-width: 768px) {
-      body {
-        padding: 10px;
+      .card-content {
+        flex-direction: column;
+        align-items: center;
       }
+
+      .card-content img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
       .container {
         padding: 20px;
-      }
-      h1 {
-        font-size: 20px;
-      }
-      iframe {
-        height: 400px;
-      }
-      .card h2 {
-        font-size: 18px;
-      }
-      .card p {
-        font-size: 15px;
-      }
-      .card img {
-        width: 100% !important;
-        height: auto !important;
-        margin-bottom: 15px;
-      }
-      .card .flex-responsive {
-        flex-direction: column !important;
-      }
-      #textContainer {
-        max-height: 200px;
       }
     }
   </style>
@@ -157,48 +177,52 @@
 <body>
   <div class="toggle-wrapper">
     <label class="toggle-switch">
-      <input type="checkbox" id="themeToggle">
+      <input type="checkbox" id="themeToggle" />
       <span class="slider"></span>
     </label>
     <label for="themeToggle" class="toggle-label">切換深色模式</label>
   </div>
 
   <div class="container">
-    <!-- Card 1 -->
-    <div class="card">
-      <h2>台中市65歲以上人口分布</h2>
-      <p>
-        東勢區65歲以上人口比例為23.44%，南屯區65歲以上人口比例為12.28%。儘管在圖上的顏色較淺，但就比例來看，老人的占比是較高的。
-        這些數據反映出，即使在年輕化的區域，老年人口的增長也不容忽視。
-        本圖表提供了台中市各行政區65歲以上人口分布的資訊，揭示了城市老化的現象。
-        這些數據對企業與政府機構在規劃未來發展方向、滿足不斷變化的人口結構需求方面，具有重要的參考價值。
-      </p>
-      <iframe src="https://plotdb.io/v/chart/37294" allowfullscreen></iframe>
+    <div class="button-group">
+      <button class="tab-btn active" onclick="showCard(0)">65歲以上人口</button>
+      <button class="tab-btn" onclick="showCard(1)">80歲以上人口</button>
+      <button class="tab-btn" onclick="showCard(2)">集點子方案</button>
     </div>
 
-    <!-- Card 2 -->
+    <!-- 卡片1 -->
+    <div class="card active">
+      <h2>台中市65歲以上人口分布</h2>
+      <p>東勢區65歲以上人口比例為23.44%，南屯區為12.28%。儘管圖示顏色較淺，但老年人口占比仍高。圖表揭示城市老化現象，對企業與政府規劃有重要參考價值。</p>
+      <iframe src="https://plotdb.io/v/chart/37294" allowfullscreen style="width:100%; height:400px; border:none; border-radius:8px;"></iframe>
+    </div>
+
+    <!-- 卡片2 -->
     <div class="card">
       <h2>台中市80歲以上人口分布</h2>
-      <p>
-        台中市80歲以上人口總數為88,196人，分布於29個行政區及555個村里，平均每村里有141人。
-        最多達513人，最少為26人，顯示高齡化集中區域面臨更大照護壓力。由於此年齡已達國人平均壽命（80.23歲），
-        高齡者的醫療、照護與生活品質需特別關注。企業與政府可藉此推動高齡科技、智慧長照、社區銀髮服務等，創造社會與商業雙贏。
-      </p>
-      <iframe src="https://plotdb.io/v/chart/37433" allowfullscreen></iframe>
+      <p>台中市80歲以上人口共88,196人，平均每村里141人，最多513人。高齡者照護壓力需重視。可藉此推動高齡科技、智慧長照與社區銀髮服務。</p>
+      <iframe src="https://plotdb.io/v/chart/37433" allowfullscreen style="width:100%; height:400px; border:none; border-radius:8px;"></iframe>
     </div>
 
-    <!-- Card 3：集點子方案 -->
-    <div class="card" style="margin-top: 40px;">
-      <h2 style="margin-bottom: 20px;">集點子－龍井區老年族群數位賦能行動方案</h2>
-      <div class="flex-responsive" style="display: flex; align-items: flex-start; gap: 20px; flex-wrap: wrap;">
-        <img src="photo.jpg" alt="老年人學習科技與互動課程" style="width: 300px; height: auto; border-radius: 10px;">
-        <div id="textContainer" style="flex: 1; display: flex; flex-direction: column; justify-content: flex-start; max-height: 300px; overflow: hidden;">
-          <p>本方案旨在提升龍井區老年族群的生活品質與社會參與度，針對該區老年人口結構特性（年齡 6,837 人、身心障礙 9,220 人、長照需求 10,375 人），設計一套結合電子設備教學與電子遊戲的創新課程。其目的為透過數位工具教學與電子遊戲，提升老年人資訊獲取能力、延緩認知退化、促進社交互動。</p>
-          <p>具體內容為：課程設計：結合數位工具教學與電子遊戲，設定任務與目標，提供成就感。分組教學：依學員年齡、長照需求等分組，提供客製化學習環境。戶外遊戲：鼓勵少外出者參與，建立遊戲社群，分享心得。網路安全教學：教授基本網路安全與資訊檢索技能。</p>
-          <p>希望此課程能提升老年人數位技能，促進資訊獲取與應用，延緩認知退化，維持身心健康。促進社區互助與交流，建立支持網絡，拓展休閒與社交圈，提升生活品質。一開始可以先讓老年者遊玩貼近生活、實用導向的遊戲，先讓他們「先玩玩看」，有嘗試後再自由探索有興趣的遊戲類型。</p>
+    <!-- 卡片3 -->
+    <div class="card">
+      <h2>集點子－龍井區老年族群數位賦能行動方案</h2>
+      <div class="card-content">
+        <img src="photo.jpg" alt="老年人學習科技與互動課程">
+        <div>
+          <p>本方案針對龍井區老年人口結構，設計結合電子設備教學與電子遊戲的創新課程，提升資訊獲取能力、延緩認知退化、促進社交互動。</p>
+          <p>
+            課程內容：
+            <ul>
+              <li>📱 數位工具教學＋電子遊戲</li>
+              <li>👥 分組教學，依年齡與需求客製化</li>
+              <li>🌳 戶外遊戲與社群活動</li>
+              <li>🔐 網路安全與資訊檢索訓練</li>
+            </ul>
+            此課程旨在建立社區支持網絡、擴展老年人社交圈，提升整體生活品質。
+          </p>
         </div>
       </div>
-      <button id="readMoreBtn" style="margin-top: 10px;">閱讀更多</button>
     </div>
   </div>
 
@@ -208,14 +232,14 @@
       document.body.classList.toggle('dark-mode', toggle.checked);
     });
 
-    const readMoreBtn = document.getElementById('readMoreBtn');
-    const textContainer = document.getElementById('textContainer');
-    let expanded = false;
-    readMoreBtn.addEventListener('click', () => {
-      expanded = !expanded;
-      textContainer.style.maxHeight = expanded ? 'none' : '300px';
-      readMoreBtn.textContent = expanded ? '收合內容' : '閱讀更多';
-    });
+    function showCard(index) {
+      const cards = document.querySelectorAll('.card');
+      const buttons = document.querySelectorAll('.tab-btn');
+      cards.forEach((card, i) => {
+        card.classList.toggle('active', i === index);
+        buttons[i].classList.toggle('active', i === index);
+      });
+    }
   </script>
 </body>
 </html>
