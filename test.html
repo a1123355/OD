@@ -237,6 +237,14 @@
         card.classList.toggle('active', i === index);
       });
     }
+    const readMoreBtn = document.getElementById('readMoreBtn');
+    const textContainer = document.getElementById('textContainer');
+    let expanded = false;
+    readMoreBtn.addEventListener('click', () => {
+      expanded = !expanded;
+      textContainer.style.maxHeight = expanded ? 'none' : '300px';
+      readMoreBtn.textContent = expanded ? '收合內容' : '閱讀更多';
+    });
   </script>
 </body>
 </html>
