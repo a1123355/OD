@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>台中市65歲以上人口分布分析</title>
   <style>
     :root {
@@ -106,24 +106,21 @@
       box-shadow: 0 2px 10px rgba(0,0,0,0.08);
       transition: background 0.3s, box-shadow 0.3s;
     }
-
     .dark-mode .card {
       background: var(--card-dark);
       box-shadow: 0 2px 12px rgba(0,0,0,0.4);
     }
-
     .card h2 {
       font-size: 22px;
       margin-top: 0;
       margin-bottom: 12px;
     }
-
     .card p {
       font-size: 16px;
       line-height: 1.8;
     }
 
-    /* 手機版響應式設計 */
+    /* 響應式調整 */
     @media (max-width: 768px) {
       body {
         padding: 10px;
@@ -136,6 +133,23 @@
       }
       iframe {
         height: 400px;
+      }
+      .card h2 {
+        font-size: 18px;
+      }
+      .card p {
+        font-size: 15px;
+      }
+      .card img {
+        width: 100% !important;
+        height: auto !important;
+        margin-bottom: 15px;
+      }
+      .card .flex-responsive {
+        flex-direction: column !important;
+      }
+      #textContainer {
+        max-height: 200px;
       }
     }
   </style>
@@ -153,24 +167,33 @@
     <!-- Card 1 -->
     <div class="card">
       <h2>台中市65歲以上人口分布</h2>
-      <p>東勢區65歲以上人口比例為23.44%，南屯區65歲以上人口比例為12.28%。儘管在圖上的顏色較淺，但就比例來看，老人的占比是較高的。這些數據反映出，即使在年輕化的區域，老年人口的增長也不容忽視。本圖表提供了台中市各行政區65歲以上人口分布的資訊，揭示了城市老化的現象。這些數據對企業與政府機構在規劃未來發展方向、滿足不斷變化的人口結構需求方面，具有重要的參考價值。</p>
+      <p>
+        東勢區65歲以上人口比例為23.44%，南屯區65歲以上人口比例為12.28%。儘管在圖上的顏色較淺，但就比例來看，老人的占比是較高的。
+        這些數據反映出，即使在年輕化的區域，老年人口的增長也不容忽視。
+        本圖表提供了台中市各行政區65歲以上人口分布的資訊，揭示了城市老化的現象。
+        這些數據對企業與政府機構在規劃未來發展方向、滿足不斷變化的人口結構需求方面，具有重要的參考價值。
+      </p>
       <iframe src="https://plotdb.io/v/chart/37294" allowfullscreen></iframe>
     </div>
 
     <!-- Card 2 -->
     <div class="card">
       <h2>台中市80歲以上人口分布</h2>
-      <p>台中市80歲以上人口總數為88,196人，分布於29個行政區及555個村里，平均每村里有141人。最多達513人，最少為26人，顯示高齡化集中區域面臨更大照護壓力。由於此年齡已達國人平均壽命（80.23歲），高齡者的醫療、照護與生活品質需特別關注。企業與政府可藉此推動高齡科技、智慧長照、社區銀髮服務等，創造社會與商業雙贏。</p>
+      <p>
+        台中市80歲以上人口總數為88,196人，分布於29個行政區及555個村里，平均每村里有141人。
+        最多達513人，最少為26人，顯示高齡化集中區域面臨更大照護壓力。由於此年齡已達國人平均壽命（80.23歲），
+        高齡者的醫療、照護與生活品質需特別關注。企業與政府可藉此推動高齡科技、智慧長照、社區銀髮服務等，創造社會與商業雙贏。
+      </p>
       <iframe src="https://plotdb.io/v/chart/37433" allowfullscreen></iframe>
     </div>
 
-    <!-- Card 3 -->
+    <!-- Card 3：集點子方案 -->
     <div class="card" style="margin-top: 40px;">
       <h2 style="margin-bottom: 20px;">集點子－龍井區老年族群數位賦能行動方案</h2>
-      <div style="display: flex; align-items: flex-start; gap: 20px; flex-wrap: wrap;">
-        <img src="photo.jpg" alt="老年人學習科技與互動課程" style="width: 300px; height: auto; border-radius: 10px; vertical-align: middle;">
-        <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-start; max-height: 300px; overflow: hidden;" id="textContainer">
-          <p style="margin-top: 0;">本方案旨在提升龍井區老年族群的生活品質與社會參與度，針對該區老年人口結構特性（年齡 6,837 人、身心障礙 9,220 人、長照需求 10,375 人），設計一套結合電子設備教學與電子遊戲的創新課程。其目的為透過數位工具教學與電子遊戲，提升老年人資訊獲取能力、延緩認知退化、促進社交互動。</p>
+      <div class="flex-responsive" style="display: flex; align-items: flex-start; gap: 20px; flex-wrap: wrap;">
+        <img src="photo.jpg" alt="老年人學習科技與互動課程" style="width: 300px; height: auto; border-radius: 10px;">
+        <div id="textContainer" style="flex: 1; display: flex; flex-direction: column; justify-content: flex-start; max-height: 300px; overflow: hidden;">
+          <p>本方案旨在提升龍井區老年族群的生活品質與社會參與度，針對該區老年人口結構特性（年齡 6,837 人、身心障礙 9,220 人、長照需求 10,375 人），設計一套結合電子設備教學與電子遊戲的創新課程。其目的為透過數位工具教學與電子遊戲，提升老年人資訊獲取能力、延緩認知退化、促進社交互動。</p>
           <p>具體內容為：課程設計：結合數位工具教學與電子遊戲，設定任務與目標，提供成就感。分組教學：依學員年齡、長照需求等分組，提供客製化學習環境。戶外遊戲：鼓勵少外出者參與，建立遊戲社群，分享心得。網路安全教學：教授基本網路安全與資訊檢索技能。</p>
           <p>希望此課程能提升老年人數位技能，促進資訊獲取與應用，延緩認知退化，維持身心健康。促進社區互助與交流，建立支持網絡，拓展休閒與社交圈，提升生活品質。一開始可以先讓老年者遊玩貼近生活、實用導向的遊戲，先讓他們「先玩玩看」，有嘗試後再自由探索有興趣的遊戲類型。</p>
         </div>
@@ -188,19 +211,10 @@
     const readMoreBtn = document.getElementById('readMoreBtn');
     const textContainer = document.getElementById('textContainer');
     let expanded = false;
-
     readMoreBtn.addEventListener('click', () => {
-      if (!expanded) {
-        textContainer.style.maxHeight = "none";
-        textContainer.style.overflow = "visible";
-        readMoreBtn.textContent = "顯示較少";
-        expanded = true;
-      } else {
-        textContainer.style.maxHeight = "300px";
-        textContainer.style.overflow = "hidden";
-        readMoreBtn.textContent = "閱讀更多";
-        expanded = false;
-      }
+      expanded = !expanded;
+      textContainer.style.maxHeight = expanded ? 'none' : '300px';
+      readMoreBtn.textContent = expanded ? '收合內容' : '閱讀更多';
     });
   </script>
 </body>
