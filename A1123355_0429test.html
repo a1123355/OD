@@ -98,6 +98,30 @@
     input:checked + .slider::before {
       transform: translateX(26px);
     }
+    .card {
+      background: var(--card-light);
+      border-radius: 12px;
+      padding: 20px 25px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    .dark-mode .card {
+      background: var(--card-dark);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+
+    .card h2 {
+      font-size: 22px;
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      font-size: 16px;
+      line-height: 1.8;
+    }
 
     /* 手機版響應式設計 */
     @media (max-width: 768px) {
@@ -126,21 +150,26 @@
   </div>
 
   <div class="container">
-    <h1>
-      東勢區65歲以上人口比例為23.44%，南屯區65歲以上人口比例為12.28%。儘管在圖上的顏色較淺，但就比例來看，老人的占比是較高的。
-      這些數據反映出，即使在年輕化的區域，老年人口的增長也不容忽視。
-      本圖表提供了台中市各行政區65歲以上人口分布的資訊，揭示了城市老化的現象。
-      這些數據對企業與政府機構在規劃未來發展方向、滿足不斷變化的人口結構需求方面，具有重要的參考價值。
-    </h1>
-    <iframe src="https://plotdb.io/v/chart/37294" allowfullscreen></iframe>
-
-    <h1>
-      台中市80歲以上人口分布圖表
-    </h1>
-    <iframe src="https://plotdb.io/v/chart/37433" allowfullscreen></iframe>
-    <p>
-      臺中市80歲以上人口總數達88,196人，分布於29個行政區與555個村里。平均每個村里約有141位80歲以上的長者，顯示高齡人口已廣泛分布於整個城市。從數據中也可看出極端差異：人口最多的村里達513人，最少則僅有26人，中位數為129人。這反映出某些地區高齡化特別集中，可能面臨更高的長照與醫療壓力。考量國人平均壽命約為80.23歲，這些長者已步入生命末段，對健康照護、社會支持與居住安全的需求更加迫切。企業可據此發展精準照護、智慧長照設備、社區銀髮服務中心等產業，政府則須強化資源配置，以回應逐步加劇的高齡化挑戰。
-    </p>
+    <!-- Card 1: 65歲以上人口 -->
+    <div class="card">
+      <h2>台中市65歲以上人口分布</h2>
+      <p>
+        東勢區65歲以上人口比例為23.44%，南屯區為12.28%。儘管在圖上的顏色較淺，但比例不容忽視，代表高齡人口在不同區域皆有顯著分布。
+        此圖表揭示台中市老化現象的整體輪廓，為城市規劃、長照政策及銀髮產業提供重要參考依據。
+      </p>
+      <iframe src="https://plotdb.io/v/chart/37294" allowfullscreen></iframe>
+    </div>
+  
+    <!-- Card 2: 80歲以上人口 -->
+    <div class="card">
+      <h2>台中市80歲以上人口分布</h2>
+      <p>
+        台中市80歲以上人口總數為88,196人，分布於29個行政區及555個村里，平均每村里有141人。
+        最多達513人，最少為26人，顯示高齡化集中區域面臨更大照護壓力。由於此年齡已達國人平均壽命（80.23歲），
+        高齡者的醫療、照護與生活品質需特別關注。企業與政府可藉此推動高齡科技、智慧長照、社區銀髮服務等，創造社會與商業雙贏。
+      </p>
+      <iframe src="https://plotdb.io/v/chart/37433" allowfullscreen></iframe>
+    </div>
   </div>
 
   <script>
